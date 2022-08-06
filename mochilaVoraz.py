@@ -5,7 +5,6 @@ import numpy as np
 
 def mochilaVoraz(peso, beneficio, capacidad):
     
-    # Inicializar variables
     solucion = np.zeros(peso.shape[0]) #inicializacion fila de ceros y columna de ceros. 
 
     #dividir beneficio entre peso
@@ -16,9 +15,11 @@ def mochilaVoraz(peso, beneficio, capacidad):
 
     #establecer si se puede o no agregar el objeto
     for i in range(peso.shape[0]):
+        #si el peso del objeto es menor o igual a la capacidad, si se puede agregar.
         if peso[beneficio_peso_ordenado[i]] <= capacidad:
             solucion[beneficio_peso_ordenado[i]] = 1
-            capacidad -= peso[beneficio_peso_ordenado[i]]
+            capacidad -= peso[beneficio_peso_ordenado[i]] #decremento la capacidad, porque se agrega el objeto, por ende la capacidad se reduce.
+        #si el peso del objeto es mayor a la capacidad, no se puede agregar.
         else:
             solucion[beneficio_peso_ordenado[i]] = 0
     print("indices de los objetos que se pueden agregar: ", beneficio_peso_ordenado)
